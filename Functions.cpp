@@ -27,13 +27,21 @@ void add_contact(string &name, string &job, string &description, string &number,
 }
 
 void find_contact(string &clue, Contact *address_book){
+    // isFound status.
+    int isFound = 0;
     Contact *p = address_book;
     while(p != nullptr){
         if(p->name == clue || p->job == clue || p->number == clue){
             // Have found the contact. Show the information of the contact.
             p->show();
+            isFound = 1;
         }
         p = p->next;
+    }
+    // The contact you want to find is not existed.
+    if(isFound == 0){
+        cout << "--------------------" << endl;
+        cout << "The contact you want to find is not existed." << endl;
     }
 }
 
